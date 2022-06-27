@@ -6,11 +6,14 @@ from write import load_db_table
 
 
 def main():
-    table_names = [sys.argv[1].split(',')[0]]
+    table_names = sys.argv[1].split(',')
+    print(table_names)
     configs = dict(os.environ.items())
-    conn = f'postgresql://retail_user:itversity@localhost:5452/retail_db'
+    conn = f'postgresql://{configs["USER"]}:{configs["PASS"]}@{configs["HOST"]}:{configs["PORT"]}/{configs["DB_NAME"]}'
     for table_name in table_names:
+        print(table_name)
         for df in get_json_reader(configs['BASE_DIR'], table_name):
+            print(table_name)
             load_db_table(df, conn, table_name, df.columns[0])
 
 

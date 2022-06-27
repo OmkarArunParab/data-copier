@@ -1,0 +1,1 @@
+docker run -it --name data-copier --rm --network data-copier-nw -v C:\Users\omkar\data\retail_db_json:/retail_db_json -e BASE_DIR=/retail_db_json -e DB_NAME=retail_db -e USER=retail_user -e PASS=itversity -e HOST=ba48fa2fd43f -e PORT=5432 data-copier python /data-copier/app/app.py departments,categories

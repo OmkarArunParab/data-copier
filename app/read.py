@@ -1,9 +1,8 @@
 import os
 import pandas as pd
 def get_json_reader(BASE_DIR,TABLE_NAME,chunksize=1000):
-    dir_path=f'{BASE_DIR}\{TABLE_NAME}'
-    file_name=os.listdir(dir_path)[0]
-    file_path=fr'{dir_path}\{file_name}'
+    file_name = os.listdir(f'{BASE_DIR}/{TABLE_NAME}')[0]
+    file_path = f'{BASE_DIR}/{TABLE_NAME}/{file_name}'
     return pd.read_json(file_path,lines=True,chunksize=chunksize)
 
 if __name__ == '__main__':
